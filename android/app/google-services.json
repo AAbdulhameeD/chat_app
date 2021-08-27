@@ -1,0 +1,98 @@
+{
+  "project_info": {
+    "project_number": "622913710769",
+    "project_id": "udemy-flutter-89610",
+    "storage_bucket": "udemy-flutter-89610.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:622913710769:android:5017e8684f397cf9b59090",
+        "android_client_info": {
+          "package_name": "com.example.chatapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "622913710769-kq4tagmve3ndtt4q24ajolfrv9ckf0jp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.chatapp",
+            "certificate_hash": "e46f64a337c9629e1bfefc22523ffb24cc78144b"
+          }
+        },
+        {
+          "client_id": "622913710769-7slqtbd6a414cdtifhpk97a6pi5hc7rk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAn0eGeb6JeX6aJt5WVJWyU7iMRm8-eu24"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "622913710769-7slqtbd6a414cdtifhpk97a6pi5hc7rk.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "622913710769-clv0u5fp433v14msvcfbbg6452eo4i5q.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.udemyFlutter"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:622913710769:android:52b5a265c28c4f7cb59090",
+        "android_client_info": {
+          "package_name": "com.example.udemy_social_pp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "622913710769-65h16302c2blblj5gr18bcvqjk9d64uh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.udemy_social_pp",
+            "certificate_hash": "e46f64a337c9629e1bfefc22523ffb24cc78144b"
+          }
+        },
+        {
+          "client_id": "622913710769-7slqtbd6a414cdtifhpk97a6pi5hc7rk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAn0eGeb6JeX6aJt5WVJWyU7iMRm8-eu24"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "622913710769-7slqtbd6a414cdtifhpk97a6pi5hc7rk.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "622913710769-clv0u5fp433v14msvcfbbg6452eo4i5q.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.udemyFlutter"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
