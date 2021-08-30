@@ -2,9 +2,9 @@ import 'package:chat_app/layout/home_cubit/home_cubit.dart';
 import 'package:chat_app/layout/home_cubit/home_states.dart';
 import 'package:chat_app/models/users/create_user.dart';
 import 'package:chat_app/models/users/message_model.dart';
-import 'package:chat_app/shared/components/constants.dart';
 import 'package:chat_app/shared/styles/colors.dart';
 import 'package:chat_app/shared/styles/icon_broken.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
@@ -28,14 +28,11 @@ class ChatScreen extends StatelessWidget {
         // HomeCubit.get(context)
         //     .getLastMessages(receiverId: userModel.uId.toString());
 
-     //   userModel.lastMessage=HomeCubit.get(context).messagesList[HomeCubit.get(context).messagesList.length-1].message.toString();
+        //   userModel.lastMessage=HomeCubit.get(context).messagesList[HomeCubit.get(context).messagesList.length-1].message.toString();
         return BlocConsumer<HomeCubit, HomeLayoutStates>(
           listener: (context, state) {
-            if (state is GetMessageSuccessState){
-
-            }
-              if (scrollController
-                .hasClients)
+            if (state is GetMessageSuccessState) {}
+            if (scrollController.hasClients)
               scrollController.animateTo(
                 scrollController.position.maxScrollExtent,
                 curve: Curves.easeOut,
@@ -83,8 +80,8 @@ class ChatScreen extends StatelessWidget {
                               itemBuilder: (context, index) {
                                 var message =
                                     HomeCubit.get(context).messagesList[index];
-                               // lastMessage=message.message.toString();
-                               //  print(HomeCubit.get(context).messagesList[HomeCubit.get(context).messagesList.length-1].message);
+                                // lastMessage=message.message.toString();
+                                //  print(HomeCubit.get(context).messagesList[HomeCubit.get(context).messagesList.length-1].message);
                                 if (HomeCubit.get(context).model.uId ==
                                     message.senderId)
                                   return sentMessage(message, context);
@@ -170,11 +167,24 @@ class ChatScreen extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
                           Expanded(
-                            child
-                                : Container(
+                            child: Container(
                                 child: Align(
                                     alignment: AlignmentDirectional.center,
-                                    child: CircularProgressIndicator())),
+                                    child: Center(
+                                      child: Padding(
+                                        padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                                        child: Text(
+                                          'There is no messages yet between you and ${userModel.name}',
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                            fontSize: 24,
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.grey[500]
+
+                                          ),
+                                        ),
+                                      ),
+                                    ))),
                           ),
                           Padding(
                             padding: const EdgeInsets.symmetric(
@@ -374,7 +384,8 @@ class ChatScreen extends StatelessWidget {
                 Container(
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 28.0),
-                    child: Text('${(message.date).toString().replaceRange(4, 7, '')}',
+                    child: Text(
+                        '${(message.date).toString().replaceRange(4, 7, '')}',
                         maxLines: 30,
                         textWidthBasis: TextWidthBasis.longestLine,
                         textAlign: TextAlign.end,
@@ -420,7 +431,8 @@ class ChatScreen extends StatelessWidget {
                   Container(
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 28.0),
-                      child: Text('${(message.date).toString().replaceRange(4, 7, '')}',
+                      child: Text(
+                          '${(message.date).toString().replaceRange(4, 7, '')}',
                           maxLines: 30,
                           textWidthBasis: TextWidthBasis.longestLine,
                           textAlign: TextAlign.end,
