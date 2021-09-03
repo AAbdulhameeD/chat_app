@@ -180,7 +180,6 @@ class ChatScreen extends StatelessWidget {
                                             fontSize: 24,
                                             fontWeight: FontWeight.bold,
                                             color: Colors.grey[500]
-
                                           ),
                                         ),
                                       ),
@@ -255,95 +254,6 @@ class ChatScreen extends StatelessWidget {
                           ),
                         ],
                       )
-
-                // ConditionalBuilder(
-                //   condition: HomeCubit.get(context).messagesList.length > 0,
-                //   fallback: (context) =>
-                //       Center(child: CircularProgressIndicator()),
-                //   builder: (context) => Column(
-                //     children: [
-                //       Expanded(
-                //         child: ListView.separated(
-                //           keyboardDismissBehavior:
-                //           ScrollViewKeyboardDismissBehavior.manual,
-                //           controller: scrollController,
-                //           itemBuilder: (context, index) {
-                //             var message =
-                //             HomeCubit.get(context).messagesList[index];
-                //             if (HomeCubit.get(context).model.uId ==
-                //                 message.senderId)
-                //               return sentMessage(message, context);
-                //             return receivedMessage(message, context);
-                //           },
-                //           separatorBuilder: (context, index) => SizedBox(
-                //             height: 10.0,
-                //           ),
-                //           itemCount: HomeCubit.get(context).messagesList.length,
-                //         ),
-                //       ),
-                //       Padding(
-                //         padding: const EdgeInsets.symmetric(
-                //             horizontal: 15.0, vertical: 5.0),
-                //         child: Container(
-                //           height: 45.0,
-                //           decoration: BoxDecoration(
-                //               color: Colors.white,
-                //               border: Border.all(
-                //                 width: 1.0,
-                //                 color: Colors.grey[300],
-                //               ),
-                //               borderRadius: BorderRadius.circular(15.0)),
-                //           clipBehavior: Clip.antiAliasWithSaveLayer,
-                //           child: Container(
-                //             height: 80.0,
-                //             child: Row(
-                //               children: [
-                //                 SizedBox(
-                //                   width: 5.0,
-                //                 ),
-                //                 Expanded(
-                //                     child: TextFormField(
-                //                       controller: messageController,
-                //                       decoration: InputDecoration(
-                //                         hintText: 'Type a message..',
-                //                         hintStyle: TextStyle(
-                //                           fontSize: 16.0,
-                //                           height: 1.1,
-                //                         ),
-                //                         border: InputBorder.none,
-                //                       ),
-                //                     )),
-                //                 Padding(
-                //                   padding: const EdgeInsets.only(left: 12.0),
-                //                   child: IconButton(
-                //                       onPressed: () {
-                //                         HomeCubit.get(context).chatSendMessage(
-                //                           message: messageController.text,
-                //                           receiverId: userModel.uId,
-                //                           date:
-                //                           dateFormat.format(DateTime.now()),
-                //                         );
-                //                         HomeCubit.get(context).sendNotification(
-                //                             to: userModel.deviceToken,
-                //                             title: userModel.name,
-                //                             body: messageController.text);
-                //                         print(userModel.deviceToken);
-                //                         messageController.clear();
-                //                       },
-                //                       color: defaultColor,
-                //                       icon: Icon(IconBroken.Send)),
-                //                 ),
-                //                 SizedBox(
-                //                   width: 15.0,
-                //                 )
-                //               ],
-                //             ),
-                //           ),
-                //         ),
-                //       ),
-                //     ],
-                //   ),
-                // )
                 );
           },
         );
