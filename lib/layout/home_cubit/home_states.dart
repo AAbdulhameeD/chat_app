@@ -7,12 +7,19 @@ class HomeLayoutGetUserLoadingState extends HomeLayoutStates {}
 class UpdateDeviceTokenLoadingState extends HomeLayoutStates {}
 class UpdateDeviceTokenSuccessState extends HomeLayoutStates {}
 class UpdateDeviceTokenErrorState extends HomeLayoutStates {}
+class UpdateUserDataLoadingState extends HomeLayoutStates {}
+class UpdateUserDataSuccessState extends HomeLayoutStates {}
+class UpdateUserDataErrorState extends HomeLayoutStates {}
 class HomeLayoutGetUserSuccessState extends HomeLayoutStates {
   final bool hasUser;
 
   HomeLayoutGetUserSuccessState(this.hasUser);
 }
 class HomeLayoutGetUserErrorState extends HomeLayoutStates {}
+class UpdateUserProfileLoadingState extends HomeLayoutStates {}
+class UpdateUserProfileSuccessState extends HomeLayoutStates {}
+class UpdateUserProfileErrorState extends HomeLayoutStates {}
+class ProfileImageUploadErrorState extends HomeLayoutStates {}
 class ProfileImagePickedSuccessState extends HomeLayoutStates {}
 class GetAllUsersSuccessState extends HomeLayoutStates {}
 class GetAllUsersErrorState extends HomeLayoutStates {}

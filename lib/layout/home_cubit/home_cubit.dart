@@ -5,6 +5,7 @@ import 'package:chat_app/models/users/create_user.dart';
 import 'package:chat_app/models/users/message_model.dart';
 import 'package:chat_app/models/users/notification_model.dart';
 import 'package:chat_app/modules/chats/chat_screen.dart';
+import 'package:chat_app/modules/profile/edit_profile_screen.dart';
 import 'package:chat_app/modules/profile/profile_screen.dart';
 import 'package:chat_app/modules/users/users_screen.dart';
 import 'package:chat_app/shared/components/constants.dart';
@@ -12,6 +13,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
+
 
 import 'home_states.dart';
 
@@ -37,6 +40,7 @@ class HomeCubit extends Cubit<HomeLayoutStates> {
     emit(HomeLayoutGetUserLoadingState());
     FirebaseFirestore.instance.collection('users').doc(uId).get().then((value)  {
       model =  UserModel.fromJson(value.data());
+     // image=model.image;
       updateDeviceToken(userDeviceToken: deviceToken);
       hasUser=true;
 
@@ -47,6 +51,35 @@ class HomeCubit extends Cubit<HomeLayoutStates> {
       emit(HomeLayoutGetUserErrorState());
     });
   }
+  void updateUser({
+    required String name,
+    required String phone,
+    required String bio,
+    String? image,
+  }) {
+    emit(UpdateUserDataLoadingState());
+    UserModel userModel = UserModel(
+      name: name,
+      phone: phone,
+      bio: bio,
+      image: image ?? model.image,
+      email: model.email,
+      uId: model.uId,
+      deviceToken: deviceToken,
+    );
+
+    FirebaseFirestore.instance
+        .collection('users')
+        .doc(model.uId)
+        .update(userModel.toMap(userModel))
+        .then((value) {
+      //no need to emit state
+      getUserData();
+      emit(UpdateUserDataSuccessState());
+    }).catchError((error) {
+      emit(UpdateUserDataErrorState());
+    });
+  }
 
   void updateDeviceToken({required String userDeviceToken}) {
     emit(UpdateDeviceTokenLoadingState());
@@ -54,7 +87,6 @@ class HomeCubit extends Cubit<HomeLayoutStates> {
       name: model.name,
       phone: model.phone,
       bio: model.bio,
-      cover: model.cover,
       image: model.image,
       email: model.email,
       uId: model.uId,
@@ -73,17 +105,49 @@ class HomeCubit extends Cubit<HomeLayoutStates> {
     });
   }
 
-  late File profileImage;
+  File? profileImage;
   var picker = ImagePicker();
+   dynamic image;
+
 
   Future getProfileImage() async {
-    final pickedFile = await picker.getImage(source: ImageSource.gallery);
+    final pickedFile = await picker.pickImage(source: ImageSource.gallery);
     if (pickedFile != null) {
       profileImage = File(pickedFile.path);
+      image=profileImage;
       emit(ProfileImagePickedSuccessState());
     } else {
       emit(ProfileImagePickedSuccessState());
     }
+  }
+  void uploadProfileImage({
+     required String name,
+     required String phone,
+     required String bio,
+  }) {
+    emit(UpdateUserProfileLoadingState());
+
+    firebase_storage.FirebaseStorage.instance
+        .ref()
+        .child('users/${Uri.file(profileImage!.path).pathSegments.last}')
+        .putFile(profileImage!)
+        .then((value) {
+      value.ref.getDownloadURL().then((value) {
+        ///////////******
+        updateUser(
+          name: name,
+          phone: phone,
+          bio: bio,
+          image: value,
+        );
+        image=model.image;
+        ///////////******
+      }).catchError((error) {
+        emit(ProfileImageUploadErrorState());
+      });
+    }).catchError((error) {
+      emit(ProfileImageUploadErrorState());
+    });
   }
 
   List<UserModel> allUsers = [];
