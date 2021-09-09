@@ -26,12 +26,13 @@ Widget defaultTextButton(
     {
       required Function onPressed,
       required String text,
+      required Color color,
 
     }
     )=>TextButton(onPressed: (){
       onPressed();
 }, child: Text(text.toUpperCase(),style: TextStyle(
-    color: defaultColor,
+    color: color,
     fontWeight: FontWeight.bold
 
 ),));

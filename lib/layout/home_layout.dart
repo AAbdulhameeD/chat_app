@@ -13,7 +13,7 @@ class ChatHomeLayout extends StatelessWidget {
       listener: (context, state) {},
       builder: (context, state) {
         return Scaffold(
-          appBar: AppBar(),
+
           bottomNavigationBar: BottomNavigationBar(
             currentIndex:HomeCubit.get(context).currentIndex ,
             onTap: (index){

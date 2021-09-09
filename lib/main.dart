@@ -16,9 +16,10 @@ Widget? widget;
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-
+  deviceToken = (await FirebaseMessaging.instance.getToken())!;
+  print('$deviceToken device token');
   await CacheHelper.init();
-  deviceToken =  FirebaseMessaging.instance.getToken().toString();
+
  uId = CacheHelper.getData(key: 'uId')??'';
 
   if (uId != '') {
